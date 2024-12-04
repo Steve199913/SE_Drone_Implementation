@@ -2,8 +2,19 @@ package patterns;
 
 public class FarmItem extends FarmComponent {
 
-    public FarmItem(String name, double x, double y, double width, double height) {
+    private double price;
+
+    public FarmItem(String name, double x, double y, double width, double height, double price) {
         super(name, x, y, width, height);
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
@@ -18,6 +29,6 @@ public class FarmItem extends FarmComponent {
 
     @Override
     public void display() {
-        System.out.println("Item: " + name + " at (" + x + ", " + y + "), Dimensions: " + width + "x" + height);
+        System.out.println("Item: " + name + " at (" + x + ", " + y + "), Dimensions: " + width + "x" + height + ", Price: " + price);
     }
 }
