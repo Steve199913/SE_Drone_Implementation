@@ -2,7 +2,7 @@ package patterns;
 
 public abstract class FarmComponent {
     protected String name;
-    protected double x, y, width, height;
+    protected double x, y, width, height,price;
 
     public FarmComponent(String name, double x, double y, double width, double height) {
         this.name = name;

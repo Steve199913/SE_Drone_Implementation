@@ -10,6 +10,9 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
+		        singletonDashboard dashboard = singletonDashboard.getInstance();
+		        dashboard.initialize(primaryStage);
+		        dashboard.showDashboard();
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 			Scene scene = new Scene(root);
@@ -21,8 +24,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-			
+	public static void main(String[] args) {		
 		launch(args);
 	}
 
