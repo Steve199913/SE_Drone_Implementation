@@ -23,7 +23,6 @@ public class FarmLayoutManager {
     public boolean modifyComponent(String name, double newX, double newY, double newWidth, double newHeight) {
         for (FarmComponent component : rootContainer.getComponents()) {
             if (component.getName().equals(name)) {
-                // Update component properties
                 component.setX(newX);
                 component.setY(newY);
                 component.setWidth(newWidth);
@@ -39,25 +38,24 @@ public class FarmLayoutManager {
                             Label label = (Label) stackPane.getChildren().get(1);
 
                             if (label.getText().equals(name)) {
-                                // Update position and size of the StackPane
+                       
                                 stackPane.setLayoutX(newX);
                                 stackPane.setLayoutY(newY);
                                 stackPane.setPrefSize(newWidth, newHeight);
 
-                                // Update the rectangle inside the StackPane
-                                Rectangle rectangle = (Rectangle) stackPane.getChildren().get(0);
+                                                                Rectangle rectangle = (Rectangle) stackPane.getChildren().get(0);
                                 rectangle.setWidth(newWidth);
                                 rectangle.setHeight(newHeight);
 
                                 System.out.println("Updated Rectangle and Label for Component: " + name);
-                                return true; // Successfully modified
+                                return true; 
                             }
                         }
                     }
                 }
             }
         }
-        return false; // No matching component found
+        return false; 
     }
 
     public void addFarmItem(String name, double x, double y, double width, double height, double price) {
@@ -114,7 +112,7 @@ public class FarmLayoutManager {
     }
     
     public void removeComponentVisualization(FarmComponent component) {
-        // Remove the corresponding visual representation from the layout pane
+     
         layoutPane.getChildren().removeIf(node -> {
             if (node instanceof StackPane) {
                 StackPane stackPane = (StackPane) node;
@@ -126,7 +124,7 @@ public class FarmLayoutManager {
     }
     
     public void updateComponentVisualization(FarmComponent component, String oldName) {
-        // Remove the old visualization node
+       
         layoutPane.getChildren().removeIf(node -> {
             if (node instanceof StackPane) {
                 StackPane stackPane = (StackPane) node;
@@ -154,7 +152,7 @@ public class FarmLayoutManager {
     }
     
     public void updateComponentDimensions(FarmComponent component) {
-        // Remove the old visualization node
+       
         layoutPane.getChildren().removeIf(node -> {
             if (node instanceof StackPane) {
                 StackPane stackPane = (StackPane) node;
@@ -164,7 +162,6 @@ public class FarmLayoutManager {
             return false;
         });
 
-        // Recreate the visualization with updated dimensions
         Rectangle rectangle = new Rectangle(component.getX(), component.getY(), component.getWidth(), component.getHeight());
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(Color.TRANSPARENT);
@@ -181,7 +178,7 @@ public class FarmLayoutManager {
         layoutPane.getChildren().add(stackPane);
     }
     public void updateComponentLocation(FarmComponent component) {
-        // Remove the old visualization node
+       
         layoutPane.getChildren().removeIf(node -> {
             if (node instanceof StackPane) {
                 StackPane stackPane = (StackPane) node;
@@ -189,9 +186,7 @@ public class FarmLayoutManager {
                     .anyMatch(child -> child instanceof Label && ((Label) child).getText().equals(component.getName()));
             }
             return false;
-        });
-
-        // Add the updated visualization with the new location
+        });  
         Rectangle rectangle = new Rectangle(component.getWidth(), component.getHeight());
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(Color.TRANSPARENT);
@@ -200,15 +195,13 @@ public class FarmLayoutManager {
         label.setStyle("-fx-font-size: 12px; -fx-text-fill: black;");
 
         StackPane stackPane = new StackPane();
-        stackPane.setLayoutX(component.getX()); // Use new X coordinate
-        stackPane.setLayoutY(component.getY()); // Use new Y coordinate
+        stackPane.setLayoutX(component.getX()); 
+        stackPane.setLayoutY(component.getY());
         stackPane.setPrefSize(component.getWidth(), component.getHeight());
         stackPane.getChildren().addAll(rectangle, label);
 
         layoutPane.getChildren().add(stackPane);
     }
-
-
     public void displayLayout() {
         rootContainer.display();
     }
